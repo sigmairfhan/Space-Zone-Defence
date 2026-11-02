@@ -173,3 +173,87 @@ export const footerLinks = {
     { icon: 'bi-youtube', label: 'YouTube', href: '#' },
   ],
 }
+
+// ---------------------------------------------------------------------------
+// Defence page (placeholder copy)
+// ---------------------------------------------------------------------------
+export const defenceHero = {
+  badge: 'Defence Propulsion • Made in India',
+  title: 'Propulsion built for',
+  accent: 'defence programmes.',
+  text: 'Placeholder: a short summary of the propulsion capability, how it is designed and manufactured, and who Space Zone Defence works with. Replace with the final team content.',
+}
+
+export const gap = {
+  eyebrow: 'The capability gap',
+  title: 'Conventional approaches have limits.',
+  accent: 'There is a better way.',
+  paras: [
+    'Placeholder: describe the strengths and limitations of the established propulsion architectures in two or three sentences.',
+  ],
+  strong: 'Placeholder: one bold sentence summarising how Space Zone Defence’s approach improves on them.',
+  hint: 'See how they compare below.',
+  stats: [
+    { value: '00', label: 'Placeholder statistic label' },
+    { value: '00', label: 'Placeholder statistic label' },
+    { value: '00', label: 'Placeholder statistic label' },
+  ],
+}
+
+export const compareCriteria = [
+  { title: 'Throttle & restart', icon: 'bi-speedometer2' },
+  { title: 'Fuel safety', icon: 'bi-fire' },
+  { title: 'System complexity', icon: 'bi-globe' },
+  { title: 'Manufacturing base', icon: 'bi-gear-wide-connected' },
+  { title: 'Performance vs baseline', icon: 'bi-chevron-double-right' },
+]
+
+const row = (tone, badge = 'Placeholder value') => ({
+  tone,
+  badge,
+  detail: 'Placeholder: extra detail shown when the row is hovered or tapped.',
+})
+
+export const compareTabs = [
+  { name: 'Option A', rows: [row('bad'), row('bad'), row('good'), row('bad'), row('neutral', 'Baseline')] },
+  { name: 'Option B', rows: [row('good'), row('bad'), row('bad'), row('neutral'), row('neutral')] },
+  { name: 'Space Zone approach', rows: [row('good'), row('good'), row('good'), row('good'), row('good')] },
+]
+export const compareHint = 'Hover any row for detail · toggle between all three options'
+
+export const builtHere = {
+  eyebrow: 'Built in-house',
+  title: 'One team. One site.',
+  accent: 'Full control of delivery.',
+  text: 'Placeholder: a centred paragraph on in-house design, manufacturing and testing with no dependency on fragile supply chains.',
+  quote: 'Placeholder: a highlighted statement about speed of development or a key milestone.',
+}
+
+export const defenceTech = {
+  eyebrow: 'The technology',
+  title: 'Two core solutions to a',
+  accent: 'long-standing problem.',
+  text: 'Placeholder: describe the two technical breakthroughs and the problems each one solves.',
+  quote: '“Placeholder quote or endorsement text goes here.” — Source name',
+  quoteSource: 'Publication, Year',
+  cardTitle: 'Placeholder IP / credentials highlight',
+  cardText: 'Placeholder: describe patents, certifications or other credentials once confirmed by the team.',
+}
+
+export const programs = {
+  eyebrow: 'Active programmes',
+  title: 'In active collaboration with',
+  accent: 'public and private partners.',
+  rows: [
+    { name: 'Partner / agency 1', text: 'Placeholder: a one-line description of the programme and its current stage.', status: 'Active' },
+    { name: 'Partner / agency 2', text: 'Placeholder: a one-line description of the programme and its current stage.', status: 'Active' },
+    { name: 'Partner / agency 3', text: 'Placeholder: a one-line description of the programme and its current stage.', status: 'Active' },
+    { name: 'Partner / agency 4', text: 'Placeholder: a one-line description of the programme and its current stage.', status: 'Complete' },
+  ],
+}
+
+export const defenceCta = {
+  title: 'Discuss a specific',
+  accent: 'programme requirement.',
+  text: 'Placeholder: our engineering team engages directly with programme offices and primes.',
+}

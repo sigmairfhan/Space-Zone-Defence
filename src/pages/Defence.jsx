@@ -1,37 +1,150 @@
+import { useState } from 'react'
 import PageHero from '../components/PageHero.jsx'
-import SectionHeading from '../components/SectionHeading.jsx'
-import ImagePlaceholder from '../components/ImagePlaceholder.jsx'
-import CtaBand from '../components/CtaBand.jsx'
-import { images, capabilities, process } from '../data/site.js'
+import NavyCta from '../components/NavyCta.jsx'
+import {
+  images,
+  defenceHero,
+  gap,
+  compareCriteria,
+  compareTabs,
+  compareHint,
+  builtHere,
+  defenceTech,
+  programs,
+  defenceCta,
+} from '../data/site.js'
 
 export default function Defence() {
+  const [tab, setTab] = useState(0)
+  const active = compareTabs[tab]
+
   return (
     <>
+      {/* 1. Hero */}
       <PageHero
-        small
-        badge="Defence"
-        title="Capabilities for"
-        accent="national security."
-        text="Placeholder: an overview of how Space Zone Defence supports defence programmes."
+        badge={defenceHero.badge}
+        title={defenceHero.title}
+        accent={defenceHero.accent}
+        text={defenceHero.text}
         image={images.defenceHero}
       />
 
-      <section className="section">
+      {/* 2. Capability gap + comparison */}
+      <section className="section section-light">
         <div className="container">
-          <SectionHeading
-            eyebrow="Capabilities"
-            title="What we bring to defence programmes"
-            text="Placeholder copy — replace with the content provided by the team."
-          />
-          <div className="row g-4">
-            {capabilities.map((c) => (
-              <div className="col-md-6" key={c.title}>
-                <div className="sz-card d-flex gap-3">
-                  <i className={`bi ${c.icon} icon`} />
-                  <div>
-                    <h3 className="mt-0">{c.title}</h3>
-                    <p>{c.text}</p>
+          <div className="row g-5">
+            <div className="col-lg-7">
+              <div className="eyebrow mb-2">{gap.eyebrow}</div>
+              <h2>
+                {gap.title} <span className="serif-accent d-block">{gap.accent}</span>
+              </h2>
+              {gap.paras.map((p, i) => (
+                <p className="text-muted-sz mt-4" key={i}>{p}</p>
+              ))}
+              <p className="fw-bold mt-4">{gap.strong}</p>
+              <p className="fw-bold mt-4 mb-0">{gap.hint}</p>
+            </div>
+            <div className="col-lg-4 offset-lg-1">
+              <div className="d-grid gap-3">
+                {gap.stats.map((s, i) => (
+                  <div className="light-card" key={i}>
+                    <div className="stat stat-lg">{s.value}</div>
+                    <div>{s.label}</div>
                   </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Comparison tabs */}
+          <div className="cmp mx-auto mt-5">
+            <div className="cmp-tabs" role="tablist">
+              {compareTabs.map((t, i) => (
+                <button
+                  key={t.name}
+                  role="tab"
+                  aria-selected={tab === i}
+                  className={tab === i ? 'active' : ''}
+                  onClick={() => setTab(i)}
+                >
+                  {t.name}
+                </button>
+              ))}
+            </div>
+
+            <div className="cmp-card mt-3">
+              {compareCriteria.map((c, i) => {
+                const r = active.rows[i]
+                return (
+                  <div className={`cmp-row tone-${r.tone}`} key={c.title} tabIndex={0}>
+                    <div className="cmp-icon"><i className={`bi ${c.icon}`} /></div>
+                    <div className="cmp-main">
+                      <div className="cmp-title">{c.title}</div>
+                      <div className="cmp-detail">{r.detail}</div>
+                    </div>
+                    <span className={`pill pill-${r.tone}`}>{r.badge}</span>
+                  </div>
+                )
+              })}
+            </div>
+            <p className="text-center text-muted-sz small mt-3 mb-0">{compareHint}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Built in-house (pale blue, centred) */}
+      <section className="section section-light section-pale">
+        <div className="container text-center">
+          <div className="eyebrow mb-3">{builtHere.eyebrow}</div>
+          <h2>
+            {builtHere.title} <span className="serif-accent d-block">{builtHere.accent}</span>
+          </h2>
+          <p className="mx-auto mt-4" style={{ maxWidth: 820 }}>{builtHere.text}</p>
+          <div className="quote-box centered mx-auto mt-5">{builtHere.quote}</div>
+        </div>
+      </section>
+
+      {/* 4. Technology */}
+      <section className="section section-light">
+        <div className="container">
+          <div className="row g-5 align-items-center">
+            <div className="col-lg-7">
+              <div className="eyebrow mb-2">{defenceTech.eyebrow}</div>
+              <h2>
+                {defenceTech.title} <span className="serif-accent d-block">{defenceTech.accent}</span>
+              </h2>
+              <p className="mt-3">{defenceTech.text}</p>
+              <div className="quote-box mt-4">
+                <p className="mb-3 fst-italic">{defenceTech.quote}</p>
+                <div>{defenceTech.quoteSource}</div>
+              </div>
+            </div>
+            <div className="col-lg-5">
+              <div className="light-card p-4">
+                <h3 className="h6 fw-bold mb-3">{defenceTech.cardTitle}</h3>
+                <p className="mb-0">{defenceTech.cardText}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Active programmes */}
+      <section className="section section-light section-white">
+        <div className="container">
+          <div className="eyebrow mb-2">{programs.eyebrow}</div>
+          <h2>
+            {programs.title} <span className="serif-accent d-block">{programs.accent}</span>
+          </h2>
+          <div className="prog-table mt-5">
+            {programs.rows.map((p) => (
+              <div className="prog-row" key={p.name}>
+                <div className="prog-name">{p.name}</div>
+                <div className="prog-text">{p.text}</div>
+                <div className="text-lg-end">
+                  <span className={`status ${p.status === 'Active' ? 'status-active' : 'status-complete'}`}>
+                    {p.status}
+                  </span>
                 </div>
               </div>
             ))}
@@ -39,39 +152,8 @@ export default function Defence() {
         </div>
       </section>
 
-      <section className="section section-alt">
-        <div className="container">
-          <div className="row align-items-center g-5">
-            <div className="col-lg-6 order-lg-2">
-              <ImagePlaceholder src={images.defenceSplit} alt="Manufacturing" label="Add /images/defence-split.jpg" />
-            </div>
-            <div className="col-lg-6">
-              <SectionHeading
-                eyebrow="Advanced manufacturing"
-                title="From design to deployable hardware"
-                text="Placeholder: describe in-house manufacturing, materials, quality systems and production capacity."
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <SectionHeading eyebrow="How we work" title="A clear path from requirement to delivery" center />
-          <div className="row g-4">
-            {process.map((p) => (
-              <div className="col-md-6 col-lg-3" key={p.step}>
-                <div className="step-num">{p.step}</div>
-                <h3 className="h5 fw-semibold">{p.title}</h3>
-                <p className="text-muted-sz small">{p.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CtaBand title="Discuss your requirement" />
+      {/* 6. Navy CTA */}
+      <NavyCta title={defenceCta.title} accent={defenceCta.accent} text={defenceCta.text} />
     </>
   )
 }
