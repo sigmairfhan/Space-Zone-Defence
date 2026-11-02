@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import JobSidebar, { JobMissing } from '../components/JobSidebar.jsx'
-import { careers } from '../data/site.js'
+import { useJob } from '../hooks/useJob.js'
 import { sendApplication } from '../services/api.js'
 
 const MAX_MB = 5
@@ -23,7 +23,7 @@ const empty = {
 // Application page: /careers/:id/apply  (use id "general" for a general application)
 export default function CareerApply() {
   const { id } = useParams()
-  const job = id === 'general' ? careers.general : careers.positions.find((p) => p.id === id)
+  const { status: jobStatus, job } = useJob(id)
 
   const [form, setForm] = useState(empty)
   const [resume, setResume] = useState(null)
@@ -32,6 +32,7 @@ export default function CareerApply() {
   const [busy, setBusy] = useState(false)
   const [done, setDone] = useState(false)
 
+  if (jobStatus === 'loading') return <section className="section section-light section-flat cr-section"><div className="container"><p>Loading…</p></div></section>
   if (!job) return <JobMissing />
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })

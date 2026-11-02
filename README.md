@@ -31,16 +31,12 @@ Drop files into `public/images/` with these names (missing files show a gradient
 - Person B: `src/pages/About.jsx`, `src/pages/Contact.jsx`
 - Shared: `src/components/*`, `src/data/site.js`, `src/styles/theme.css`
 
-## Forms (PHP)
+## Forms (PHP + MySQL backend)
 
-Contact and Careers post to `public/api/contact.php` and `public/api/careers.php`
-(copied into `dist/api` on build). Edit `public/api/config.php` with the real
-recipient, sender mailbox and allowed origin.
-
-- Production: serve the built site and `/api` from the same host (cPanel `public_html`).
-- Local dev: run Apache/PHP (XAMPP) and set `VITE_API_BASE` in `.env`,
-  e.g. `VITE_API_BASE=http://localhost/spacezone-defence/dist/api`
-- Resumes are saved with random names to `career_uploads/` (outside `public_html` when possible).
+The forms post to the separate backend project `spacezone-defence-backend`
+(subdomain `dashboard.spacezonedefence.com`). The API address is set by
+`VITE_API_BASE` in `.env.production` (production) and `.env.development` (local).
+Rebuild (`npm run build`) after changing it. See the backend's `README.md`.
 
 ## Deploy (cPanel)
 

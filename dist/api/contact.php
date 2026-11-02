@@ -23,24 +23,25 @@ function no_newlines($v) { return preg_replace('/[\r\n]+/', ' ', $v); }
 $name    = no_newlines(clean($_POST['name'] ?? ''));
 $email   = trim($_POST['email'] ?? '');
 $phone   = no_newlines(clean($_POST['phone'] ?? ''));
-$subject = no_newlines(clean($_POST['subject'] ?? ''));
+$org     = no_newlines(clean($_POST['organization'] ?? ''));
+$subject = 'Website enquiry from ' . $name;
 $message = clean($_POST['message'] ?? '');
 
-if ($name === '' || $subject === '' || strlen($message) < 10) {
+if ($name === '' || strlen($message) < 10) {
     respond(false, 'Please fill in all required fields.', 422);
 }
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(false, 'Please enter a valid email address.', 422);
 }
 
-$body = "New contact enquiry\n\nName: $name\nEmail: $email\nPhone: $phone\nSubject: $subject\n\n$message\n";
+$body = "New contact enquiry\n\nName: $name\nEmail: $email\nOrganization: $org\nPhone: $phone\n\n$message\n";
 $headers = [
     'From: Space Zone Defence <' . $config['from_email'] . '>',
     'Reply-To: ' . $email,
     'Content-Type: text/plain; charset=utf-8',
 ];
 
-$sent = mail($config['to_email'], 'Website enquiry: ' . $subject, $body, implode("\r\n", $headers));
+$sent = mail($config['to_email'], $subject, $body, implode("\r\n", $headers));
 if (!$sent) respond(false, 'Could not send your message right now. Please try again later.', 500);
 
 respond(true, 'Thank you — we will get back to you soon.');

@@ -17,3 +17,23 @@ async function post(path, formData) {
 
 export const sendContact = (formData) => post('contact.php', formData)
 export const sendApplication = (formData) => post('careers.php', formData)
+
+async function get(path) {
+  const res = await fetch(`${API_BASE}/${path}`)
+  let data = {}
+  try {
+    data = await res.json()
+  } catch {
+    /* non-JSON response */
+  }
+  if (res.status === 404) return null
+  if (!res.ok || data.success === false) throw new Error(data.message || 'Could not load data.')
+  return data
+}
+
+// Job openings are created in the dashboard (dashboard.spacezonedefence.com/admin)
+export const fetchJobs = async () => (await get('jobs.php')).jobs
+export const fetchJob = async (slug) => {
+  const data = await get(`jobs.php?slug=${encodeURIComponent(slug)}`)
+  return data ? data.job : null
+}

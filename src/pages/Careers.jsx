@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import { careers } from '../data/site.js'
+import { useJobs } from '../hooks/useJob.js'
 
 // Careers list page. Each job links to /careers/<id> (detail) — the apply form
 // lives on /careers/<id>/apply (see CareerApply.jsx).
 export default function Careers() {
-  const { hero, positionsTitle, positions, emptyText, generalText } = careers
+  const { hero, positionsTitle, emptyText, generalText } = careers
+  const { status, jobs: positions } = useJobs()
 
   return (
     <>
@@ -18,7 +20,9 @@ export default function Careers() {
           <div className="jobs">
             <h2>{positionsTitle}</h2>
 
-            {positions.length === 0 && <p className="job-empty">{emptyText}</p>}
+            {status === 'loading' && <p className="job-empty">Loading openings…</p>}
+            {status === 'error' && <p className="job-empty">We could not load the openings right now. Please try again later.</p>}
+            {status === 'ready' && positions.length === 0 && <p className="job-empty">{emptyText}</p>}
 
             {positions.map((p) => (
               <div className="job-item" key={p.id}>

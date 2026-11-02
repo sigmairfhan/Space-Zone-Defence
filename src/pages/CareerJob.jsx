@@ -1,12 +1,13 @@
 import { Link, useParams } from 'react-router-dom'
 import JobSidebar, { JobMissing } from '../components/JobSidebar.jsx'
-import { careers } from '../data/site.js'
+import { useJob } from '../hooks/useJob.js'
 
 // Job detail page: /careers/:id
 export default function CareerJob() {
   const { id } = useParams()
-  const job = careers.positions.find((p) => p.id === id)
+  const { status, job } = useJob(id)
 
+  if (status === 'loading') return <section className="section section-light section-flat cr-section"><div className="container"><p>Loading…</p></div></section>
   if (!job) return <JobMissing />
 
   return (
