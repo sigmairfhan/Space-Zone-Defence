@@ -6,6 +6,8 @@ import Home from './pages/Home.jsx'
 import Defence from './pages/Defence.jsx'
 import About from './pages/About.jsx'
 import Careers from './pages/Careers.jsx'
+import CareerJob from './pages/CareerJob.jsx'
+import CareerApply from './pages/CareerApply.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -20,6 +22,8 @@ export default function App() {
           <Route path="/defence" element={<Defence />} />
           <Route path="/about" element={<About />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/careers/:id" element={<CareerJob />} />
+          <Route path="/careers/:id/apply" element={<CareerApply />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

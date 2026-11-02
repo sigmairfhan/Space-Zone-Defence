@@ -257,3 +257,154 @@ export const defenceCta = {
   accent: 'programme requirement.',
   text: 'Placeholder: our engineering team engages directly with programme offices and primes.',
 }
+
+// ---------------------------------------------------------------------------
+// About page (placeholder copy) — replace names, roles, years and photos
+// Photos go in /public/images/team/ using the file names below.
+// ---------------------------------------------------------------------------
+images.aboutTeam = '/images/about-team.jpg'
+
+export const about = {
+  hero: {
+    badge: 'About Space Zone Defence',
+    title: 'Placeholder headline about why the company was founded.',
+    text: 'Placeholder: two or three lines describing who Space Zone Defence is, what it builds and where it is based.',
+  },
+  story: {
+    eyebrow: 'Our story',
+    title: 'Placeholder story headline',
+    quote: '“Placeholder pull-quote or company motto.”',
+    text: 'Placeholder: a short paragraph on the origin of the company name and its founding purpose. Replace with the final story from the team.',
+    founder: {
+      name: 'Founder Name',
+      role: 'Founder title • Key credential',
+      text: 'Placeholder: a founder or leadership biography of four to six lines, covering background, experience and why the company was started.',
+      photo: '/images/team/founder.jpg',
+    },
+  },
+  timeline: [
+    { year: '20XX', title: 'Placeholder milestone one', text: 'Placeholder: two lines describing this milestone in the company’s history.' },
+    { year: '20XX', title: 'Placeholder milestone two', text: 'Placeholder: two lines describing this milestone in the company’s history.' },
+    { year: '20XX', title: 'Placeholder milestone three', text: 'Placeholder: two lines describing this milestone in the company’s history.' },
+    { year: '20XX', title: 'Placeholder milestone four', text: 'Placeholder: two lines describing this milestone in the company’s history.' },
+  ],
+  board: {
+    eyebrow: 'Leadership',
+    title: 'Board of Directors',
+    members: [
+      { role: 'Chief Executive Officer', name: 'Person Name', photo: '/images/team/member-1.jpg' },
+      { role: 'Chairman of the Board', name: 'Person Name', photo: '/images/team/member-2.jpg' },
+      { role: 'Independent Board Member', name: 'Person Name', photo: '/images/team/member-3.jpg' },
+      { role: 'Board Member', name: 'Person Name', photo: '/images/team/member-4.jpg' },
+      { role: 'Board Member', name: 'Person Name', photo: '/images/team/member-5.jpg' },
+      { role: 'Board Member', name: 'Person Name', photo: '/images/team/member-6.jpg' },
+    ],
+  },
+  advisors: {
+    title: 'Advisors to the Board of Directors',
+    people: [
+      {
+        name: 'Advisor Name, Title',
+        role: 'Placeholder role · One line on their background and what they bring to the board.',
+        note: 'Placeholder: an organisation, endorsement or quote related to this advisor.',
+        photo: '/images/team/advisor-1.jpg',
+      },
+      {
+        name: 'Advisor Name, Title',
+        role: 'Placeholder role · One line on their background and what they bring to the board.',
+        note: 'Placeholder: an organisation, endorsement or quote related to this advisor.',
+        photo: '/images/team/advisor-2.jpg',
+      },
+    ],
+  },
+  campus: {
+    eyebrow: 'Infrastructure',
+    title: 'Our Campus',
+    text: 'Placeholder: a paragraph describing the company’s facilities and how having design, manufacturing and testing close together speeds up development.',
+    cards: [
+      { label: 'Headquarters', title: 'Corporate HQ', text: 'Placeholder: description of the headquarters, engineering offices and design teams.', tone: 'blue' },
+      { label: 'Manufacturing', title: 'Production Facility', text: 'Placeholder: description of the production facility and equipment.', tone: 'lime' },
+      { label: 'Test & Validation', title: 'Test Facility', text: 'Placeholder: description of the on-site test facility and what it validates.', tone: 'navy' },
+    ],
+  },
+  cta: {
+    title: 'Want to speak with the team?',
+    text: 'Placeholder: whether you are exploring a programme, a partnership or an investment, we would like to hear from you.',
+  },
+}
+
+// ---------------------------------------------------------------------------
+// Careers (placeholder copy) — edit positions here.
+// Each position gets its own page at /careers/<id> and an apply page at
+// /careers/<id>/apply. Replace the placeholder sections with the real job text.
+// ---------------------------------------------------------------------------
+const jobSections = (role) => [
+  { title: 'Summary', text: `Placeholder: a short summary of the ${role} role, the team it sits in and what the person will work on.` },
+  { title: 'Travel Required', text: 'Placeholder: expected travel, e.g. occasional site visits.' },
+  {
+    title: 'Essential Duties and Responsibilities',
+    items: [
+      'Placeholder: first key responsibility of the role.',
+      'Placeholder: second key responsibility of the role.',
+      'Placeholder: third key responsibility of the role.',
+    ],
+  },
+  {
+    title: 'Qualifications',
+    items: [
+      'Placeholder: required education or equivalent experience.',
+      'Placeholder: required skills and knowledge.',
+      'Placeholder: any eligibility or compliance requirement.',
+    ],
+  },
+  {
+    title: 'Preferred Qualifications',
+    items: ['Placeholder: nice-to-have experience.', 'Placeholder: nice-to-have tools or certifications.'],
+  },
+]
+
+export const careers = {
+  hero: {
+    badge: 'Join our team',
+    title: 'Job Openings at Space Zone Defence',
+    text: 'Placeholder: a short paragraph about the team, the kind of problems you work on and the campus. Replace with the final recruiting message.',
+  },
+  positionsTitle: 'Open Positions',
+  positions: [
+    { id: 'propulsion-engineer', department: 'Engineering', title: 'Propulsion Engineer', location: 'Chennai, Tamil Nadu', type: 'Full-Time', experience: 'Experienced', compensation: 'To be discussed', sections: jobSections('Propulsion Engineer') },
+    { id: 'manufacturing-engineer', department: 'Manufacturing', title: 'Manufacturing Engineer', location: 'Chennai, Tamil Nadu', type: 'Full-Time', experience: 'Experienced', compensation: 'To be discussed', sections: jobSections('Manufacturing Engineer') },
+    { id: 'embedded-engineer', department: 'Avionics', title: 'Embedded Systems Engineer', location: 'Chennai, Tamil Nadu', type: 'Full-Time', experience: 'Entry level', compensation: 'To be discussed', sections: jobSections('Embedded Systems Engineer') },
+    { id: 'intern', department: 'Internships', title: 'Engineering Intern', location: 'Chennai, Tamil Nadu', type: 'Internship', experience: 'Entry level', compensation: 'To be discussed', sections: jobSections('Engineering Intern') },
+  ],
+  general: {
+    id: 'general',
+    department: 'Any team',
+    title: 'General Application',
+    location: 'Chennai, Tamil Nadu',
+    type: 'Full-Time',
+    experience: 'Any',
+    compensation: 'To be discussed',
+    sections: [],
+  },
+  emptyText: 'No openings right now. You can still send a general application.',
+  generalText: 'Do not see a role that fits?',
+}
+
+// ---------- Contact page (placeholder copy — replace with real details) ----------
+export const contact = {
+  hero: { badge: 'Contact us', title: "Let's talk about your", accent: 'program requirements' },
+  directTitle: 'Direct contact',
+  emailNote: 'General inquiries',
+  hqTitle: 'Headquarters',
+  hq: {
+    name: 'Space Zone Defence',
+    lines: ['Placeholder street address', 'Chennai, Tamil Nadu, India', 'Placeholder: nearby landmark or note'],
+  },
+  specificTitle: 'Looking for something specific?',
+  specific: [
+    { icon: 'bi-shield-check', title: 'Programme offices & partners', text: 'Technical briefing decks available on request' },
+    { icon: 'bi-graph-up', title: 'Investors', text: 'Placeholder: information for qualified investors' },
+    { icon: 'bi-newspaper', title: 'Press', text: 'Media inquiries and interview requests' },
+  ],
+  disclaimer: 'Placeholder: Space Zone Defence may be subject to applicable export control regulations. Some technical information may require additional verification before it can be shared.',
+}

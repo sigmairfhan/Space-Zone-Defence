@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import PageHero from '../components/PageHero.jsx'
-import { images, company } from '../data/site.js'
+import { company, contact } from '../data/site.js'
 import { sendContact } from '../services/api.js'
 
-const empty = { name: '', email: '', phone: '', subject: '', message: '', website: '' }
+const empty = { name: '', email: '', organization: '', phone: '', message: '', website: '' }
 
 export default function Contact() {
+  const { hero, directTitle, emailNote, hqTitle, hq, specificTitle, specific, disclaimer } = contact
   const [form, setForm] = useState(empty)
   const [status, setStatus] = useState({ type: '', msg: '' })
   const [busy, setBusy] = useState(false)
@@ -31,67 +32,72 @@ export default function Contact() {
 
   return (
     <>
-      <PageHero
-        small
-        badge="Contact"
-        title="Talk to our"
-        accent="engineers."
-        text="Placeholder: tell us about your requirement and we will respond shortly."
-        image={images.contactHero}
-      />
+      <PageHero plain small badge={hero.badge} title={hero.title} accent={hero.accent} />
 
-      <section className="section">
+      <section className="section section-light section-flat ct-section">
         <div className="container">
           <div className="row g-5">
             <div className="col-lg-7">
-              <form className="sz-form" onSubmit={onSubmit} noValidate={false}>
-                <div className="row g-3">
-                  <div className="col-md-6">
-                    <label htmlFor="name">Full name *</label>
-                    <input id="name" name="name" className="form-control" required value={form.name} onChange={onChange} />
-                  </div>
-                  <div className="col-md-6">
-                    <label htmlFor="email">Email *</label>
-                    <input id="email" name="email" type="email" className="form-control" required value={form.email} onChange={onChange} />
-                  </div>
-                  <div className="col-md-6">
-                    <label htmlFor="phone">Phone</label>
-                    <input id="phone" name="phone" className="form-control" value={form.phone} onChange={onChange} />
-                  </div>
-                  <div className="col-md-6">
-                    <label htmlFor="subject">Subject *</label>
-                    <input id="subject" name="subject" className="form-control" required value={form.subject} onChange={onChange} />
-                  </div>
-                  <div className="col-12">
-                    <label htmlFor="message">Message *</label>
-                    <textarea id="message" name="message" rows={6} className="form-control" required minLength={10} value={form.message} onChange={onChange} />
-                  </div>
-                  {/* honeypot: real users never see or fill this */}
-                  <div className="hp-field" aria-hidden="true">
-                    <input name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={onChange} />
-                  </div>
-                  <div className="col-12">
-                    <button className="btn btn-sz" disabled={busy}>
-                      {busy ? 'Sending…' : 'Send message'}
-                    </button>
-                  </div>
-                  {status.msg && (
-                    <div className="col-12">
-                      <div className={`alert alert-${status.type} mb-0`} role="alert">{status.msg}</div>
-                    </div>
-                  )}
+              <form className="sz-form ct-form" onSubmit={onSubmit}>
+                <label htmlFor="name">Name</label>
+                <input id="name" name="name" className="form-control" required value={form.name} onChange={onChange} />
+
+                <label htmlFor="email">Email Address</label>
+                <input id="email" name="email" type="email" className="form-control" required value={form.email} onChange={onChange} />
+
+                <label htmlFor="organization">Organization</label>
+                <input id="organization" name="organization" className="form-control" value={form.organization} onChange={onChange} />
+
+                <label htmlFor="phone">Phone Number</label>
+                <input id="phone" name="phone" className="form-control" value={form.phone} onChange={onChange} />
+
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" rows={3} className="form-control" required minLength={10} value={form.message} onChange={onChange} />
+
+                {/* honeypot: real users never see or fill this */}
+                <div className="hp-field" aria-hidden="true">
+                  <input name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={onChange} />
                 </div>
+
+                <button className="btn btn-sz ct-send" disabled={busy}>
+                  {busy ? 'Sending…' : <>Send Message <i className="bi bi-arrow-right ms-1" /></>}
+                </button>
+
+                {status.msg && <div className={`alert alert-${status.type} mt-3 mb-0`} role="alert">{status.msg}</div>}
+
+                <p className="ct-note">{disclaimer}</p>
               </form>
             </div>
 
             <div className="col-lg-5">
-              <div className="sz-card">
-                <h3 className="mt-0">Get in touch</h3>
-                <ul className="check-list text-muted-sz mt-3">
-                  <li><i className="bi bi-envelope" /><a href={`mailto:${company.email}`}>{company.email}</a></li>
-                  <li><i className="bi bi-telephone" />{company.phone}</li>
-                  <li><i className="bi bi-geo-alt" />{company.address}</li>
-                </ul>
+              <div className="ct-side">
+                <h6 className="ct-label">{directTitle}</h6>
+                <div className="ct-row">
+                  <span className="ct-icon"><i className="bi bi-envelope" /></span>
+                  <div>
+                    <a href={`mailto:${company.email}`} className="ct-strong">{company.email}</a>
+                    <div>{emailNote}</div>
+                  </div>
+                </div>
+                <hr />
+
+                <h6 className="ct-label">{hqTitle}</h6>
+                <div className="ct-hq">
+                  <strong>{hq.name}</strong>
+                  {hq.lines.map((l) => <div key={l}>{l}</div>)}
+                </div>
+                <hr />
+
+                <h6 className="ct-label">{specificTitle}</h6>
+                {specific.map((s) => (
+                  <div className="ct-row" key={s.title}>
+                    <span className="ct-icon"><i className={`bi ${s.icon}`} /></span>
+                    <div>
+                      <div className="ct-strong">{s.title}</div>
+                      <div>{s.text}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

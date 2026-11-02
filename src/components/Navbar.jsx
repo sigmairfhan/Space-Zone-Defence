@@ -5,7 +5,7 @@ import { company, navLinks } from '../data/site.js'
 export function Logo() {
   return (
     <Link to="/" className="sz-brand">
-      <svg className="mark" viewBox="0 0 40 40" aria-hidden="true">
+      <svg className="sz-mark" viewBox="0 0 40 40" aria-hidden="true">
         <path d="M4 6l16 28L36 6l-8 0-8 14-8-14z" fill="var(--sz-accent)" />
       </svg>
       <span>

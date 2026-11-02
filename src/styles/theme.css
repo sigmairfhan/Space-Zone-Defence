@@ -29,7 +29,7 @@ body { background: var(--sz-bg); }
 .sz-nav { background: rgba(8, 13, 26, 0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--sz-border); }
 .sz-brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--sz-text); letter-spacing: 0.08em; font-weight: 500; font-size: 1.15rem; }
 .sz-brand strong { font-weight: 700; }
-.sz-brand .mark { width: 34px; height: 34px; }
+.sz-brand .sz-mark { width: 34px; height: 34px; flex: none; } /* not ".mark": Bootstrap uses that name for its yellow highlight */
 .sz-nav .nav-link { color: var(--sz-text); font-weight: 500; font-size: 0.95rem; padding: 0.5rem 1rem; }
 .sz-nav .nav-link:hover, .sz-nav .nav-link.active { color: var(--sz-accent); }
 .sz-toggler { border: 1px solid var(--sz-border); color: var(--sz-text); background: transparent; padding: 0.35rem 0.6rem; border-radius: 6px; }
@@ -187,3 +187,154 @@ body { background: var(--sz-bg); }
 .navy-cta h2 { color: #fff; font-weight: 700; font-size: clamp(1.7rem, 3vw, 2.3rem); }
 .navy-cta .serif-accent { color: var(--sz-accent); font-weight: 500; }
 .navy-cta p { color: #fff; }
+
+/* ===== About page ===== */
+.hero-plain { background: #10172a; background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 140px); }
+.hero-plain::after { display: none; }
+.hero-plain h1 { max-width: 1100px; }
+.section-flat { background: #eceff4; }
+.section-light p { color: #1e293b; }
+
+/* Founder / leadership card */
+.founder-card { background: #1b2549; color: #fff; max-width: 1175px; padding: 4.5rem; }
+.founder-card h3 { color: #fff; font-weight: 700; font-size: clamp(1.7rem, 3vw, 2.3rem); }
+.founder-card .founder-role { color: #3b82f6; text-transform: uppercase; font-size: 0.95rem; margin: 0.8rem 0 1.2rem; }
+.founder-card p { color: #fff; font-size: 1.05rem; }
+.img-ph-dark { background: #26325c; border: 0; border-radius: 0; }
+@media (max-width: 767px) { .founder-card { padding: 2rem; } }
+
+/* Timeline */
+.timeline { max-width: 1100px; }
+.tl-row { display: grid; grid-template-columns: 150px 1fr; gap: 1rem; padding: 1.7rem 0; border-bottom: 1px solid #d6dbe6; }
+.tl-year { color: #3b82f6; font-weight: 600; font-size: 1.15rem; }
+.tl-title { font-weight: 700; text-transform: uppercase; font-size: 1.1rem; color: #0f172a; }
+@media (max-width: 575px) { .tl-row { grid-template-columns: 1fr; gap: 0.3rem; } }
+
+/* Board grid */
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem 2rem; }
+.team-card { width: fit-content; min-width: 250px; margin-inline: auto; }
+.team-card .team-photo { width: 250px; border-radius: 0; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25); border: 0; }
+.team-role { color: #3b82f6; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem; margin-top: 2rem; }
+.team-name { font-weight: 700; text-transform: uppercase; font-size: 1.05rem; color: #0f172a; margin-top: 0.3rem; }
+@media (max-width: 991px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 575px) { .team-grid { grid-template-columns: 1fr; } }
+
+/* Advisors */
+.advisor-card { background: #eceff4; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.14); max-width: 1010px; margin: 0 auto 2.5rem; padding: 2.8rem; display: grid; grid-template-columns: 225px 1fr; gap: 3rem; align-items: start; }
+.advisor-card .img-ph { border-radius: 0; border: 0; }
+.adv-name { color: #3b82f6; font-weight: 700; text-transform: uppercase; font-size: 1.05rem; }
+.advisor-card hr { border-color: #cdd5e3; opacity: 1; }
+.adv-note { font-style: italic; color: #475569 !important; }
+@media (max-width: 767px) { .advisor-card { grid-template-columns: 1fr; padding: 1.5rem; gap: 1.5rem; } }
+
+/* Campus */
+.campus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 960px; margin: 0 auto; }
+.campus-card { background: #f7f8fc; border-top: 4px solid #3b82f6; border-radius: 6px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.14); padding: 1.4rem 1.3rem; }
+.campus-card.campus-lime { border-top-color: var(--sz-accent); }
+.campus-card.campus-navy { border-top-color: #1b2549; }
+.campus-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #3b82f6; }
+.campus-lime .campus-label { color: #6a8a1a; }
+.campus-navy .campus-label { color: #1b2549; }
+.campus-card h3 { font-size: 1.3rem; font-weight: 700; margin: 0.4rem 0 0.8rem; color: #0f172a; }
+.campus-card p { font-size: 0.8rem; color: #334155 !important; }
+@media (max-width: 767px) { .campus-grid { grid-template-columns: 1fr; } }
+
+/* About CTA */
+.about-cta { padding: 6rem 0; }
+.about-cta h2 { font-size: 1.7rem; }
+
+/* ===== Footer fixes ===== */
+.sz-footer .sz-brand { color: var(--sz-text); }
+.sz-footer .sz-brand:hover { color: var(--sz-text); }
+.footer-search .form-control { background: #fff; color: #0f172a; border: 1px solid #fff; }
+.footer-search .form-control::placeholder { color: #6b7280; }
+
+/* ===== Careers page ===== */
+.jobs { max-width: 560px; margin: 0 auto; }
+.jobs h2 { font-size: 1.3rem; font-weight: 600; padding-bottom: 0.9rem; margin-bottom: 0; border-bottom: 1px solid #b9c0cc; }
+.job-item { padding: 1rem 0; border-bottom: 1px solid #dfe3ea; }
+.job-dept { font-size: 0.78rem; color: #5b6575; }
+.job-line { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-top: 0.35rem; }
+.job-link { background: none; border: 0; padding: 0; text-align: left; cursor: pointer; font-size: 1.05rem; font-weight: 600; color: #1d3fd1; text-decoration: underline; }
+.job-link:hover { color: #3b73e8; }
+.job-loc { font-size: 0.78rem; color: #4b5563; white-space: nowrap; }
+.job-empty { color: #4b5563; padding-top: 1rem; }
+
+/* Form fields on light sections (the default .sz-form is styled for dark backgrounds) */
+.section-light .sz-form label { color: #475569; }
+.section-light .sz-form .form-control,
+.section-light .sz-form .form-select { background: #fff; border: 1px solid #cbd3e1; color: #0f172a; }
+.section-light .sz-form .form-control:focus,
+.section-light .sz-form .form-select:focus { background: #fff; color: #0f172a; border-color: var(--sz-accent-dark); }
+.section-light .sz-form .form-control::placeholder { color: #94a3b8; }
+
+/* Careers list extras */
+.job-link { text-decoration: underline; }
+.job-general { margin-top: 1.4rem; font-size: 0.9rem; color: #4b5563 !important; }
+.job-link-inline { color: #1d3fd1; font-weight: 600; }
+
+/* ===== Job detail + apply pages ===== */
+.cr-section { padding: 3.5rem 0 4.5rem; }
+.cr-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(15, 23, 42, 0.08); padding: 1.6rem 1.8rem; }
+.cr-main { padding: 1.8rem 2.2rem 2.2rem; }
+.cr-back { display: inline-flex; align-items: center; gap: 0.4rem; color: #475569; font-size: 0.85rem; text-decoration: none; }
+.cr-back:hover { color: #1d3fd1; }
+.cr-title { font-size: 1.7rem; font-weight: 700; color: #1f3a6e; margin: 1rem 0 0.2rem; }
+.cr-sub { color: #334155; font-size: 0.92rem; padding-bottom: 1.1rem; border-bottom: 1px solid #e2e6ee; }
+.cr-body { padding-top: 1.6rem; }
+.cr-h2 { font-size: 1.55rem; font-weight: 400; color: #1e293b; margin-bottom: 1.4rem; }
+.cr-body h3 { font-size: 0.95rem; font-weight: 700; margin: 1.4rem 0 0.35rem; color: #0f172a; }
+.cr-body p, .cr-body li { font-size: 0.93rem; line-height: 1.6; color: #1e293b; }
+.cr-body ul { padding-left: 1.3rem; margin-bottom: 0; }
+
+.cr-side { position: sticky; top: 92px; }
+@media (max-width: 991px) { .cr-side { position: static; } }
+.btn-outline-job { border: 2px solid #1f3a6e; color: #1f3a6e; font-weight: 600; background: transparent; }
+.btn-outline-job:hover { background: #1f3a6e; color: #fff; }
+.cr-link-label { font-size: 0.85rem; font-weight: 600; color: #1e293b; margin-bottom: 0.4rem; display: block; }
+.cr-link-input { border-radius: 999px !important; font-size: 0.85rem; background: #fff !important; color: #334155 !important; }
+.cr-share { display: flex; justify-content: center; gap: 0.9rem; margin-top: 1rem; }
+.cr-share a { width: 38px; height: 38px; border: 1px solid #cbd3e1; border-radius: 50%; display: grid; place-items: center; color: #0f172a; text-decoration: none; }
+.cr-share a:hover { border-color: var(--sz-accent-dark); color: var(--sz-accent-dark); }
+
+.cr-meta { margin: 1.4rem 0.5rem 0; }
+.cr-meta > div { padding: 0.7rem 0; border-bottom: 1px solid #cdd5e3; }
+.cr-meta dt { font-size: 0.82rem; font-weight: 400; color: #475569; }
+.cr-meta dd { margin: 0; font-weight: 600; color: #0f172a; }
+
+/* Apply form bottom bar */
+.apply-bar { background: #1b2549; color: #fff; border-radius: 10px; padding: 0.9rem 1.5rem; margin-top: 1.4rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.apply-brand { font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.8rem; }
+.apply-cancel { color: #fff; font-weight: 600; text-decoration: underline; }
+.btn-submit { background: #fff; color: #1b2549; font-weight: 600; padding: 0.55rem 1.4rem; border: 0; }
+.btn-submit:hover { background: var(--sz-accent); color: #0a1222; }
+.cr-done { text-align: center; padding: 2.5rem 1rem 1rem; }
+.cr-done i { font-size: 2.6rem; color: #6a8a1a; }
+.cr-done h2 { font-size: 1.5rem; margin: 0.8rem 0 0.4rem; }
+
+/* ===== Careers fixes ===== */
+.cr-link-input { border: 1px solid #cbd3e1 !important; }
+.cr-body .cr-h2 { font-size: 1.55rem; font-weight: 400; }
+.section-light .sz-form .form-control::file-selector-button { background: #eef1f6; color: #0f172a; border-right: 1px solid #cbd3e1; }
+
+/* Bootstrap's large g-5 gutter pokes past the container padding on phones and
+   causes sideways scrolling; keep the gutter equal to the container padding there. */
+@media (max-width: 767.98px) {
+  .g-5, .gx-5 { --bs-gutter-x: 1.5rem; }
+}
+
+/* ---------- Contact ---------- */
+.ct-section { padding-top: 4.5rem; padding-bottom: 5rem; }
+.ct-form label { display: block; font-size: 1rem; color: #0f172a; margin: 0 0 0.3rem; }
+.ct-form .form-control { border-radius: 2px; margin-bottom: 0.9rem; }
+.ct-form textarea.form-control { min-height: 5rem; }
+.ct-send { border-radius: 6px; padding: 0.65rem 1.6rem; margin-top: 0.4rem; }
+.ct-note { color: #475569; font-size: 0.95rem; margin: 1.2rem 0 0; max-width: 40rem; }
+.ct-side { color: #1e293b; }
+.ct-side hr { border-color: #cbd3e1; opacity: 1; margin: 1.6rem 0; }
+.ct-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sz-badge); font-weight: 700; margin: 0 0 1rem; }
+.ct-row { display: flex; gap: 1.1rem; align-items: center; margin-bottom: 1.1rem; }
+.ct-icon { flex: 0 0 50px; height: 50px; border-radius: 8px; background: #dce6f8; color: #2f4a7d; display: grid; place-items: center; font-size: 1.5rem; }
+.ct-strong { font-weight: 600; color: #0f172a; text-decoration: none; display: block; }
+.ct-hq { background: #fff; border-radius: 10px; box-shadow: 0 4px 14px rgba(15,23,42,.12); padding: 2rem 2.5rem; line-height: 1.5; }
+.ct-hq strong { display: block; margin-bottom: 0.4rem; color: #0f172a; }
