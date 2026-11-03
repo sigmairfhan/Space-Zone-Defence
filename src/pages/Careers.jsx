@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import { careers } from '../data/site.js'
+import { careersHero } from '../data/careersContent.js'
 import { useJobs } from '../hooks/useJob.js'
 
 // Careers list page. Each job links to /careers/<id> (detail) — the apply form
 // lives on /careers/<id>/apply (see CareerApply.jsx).
 export default function Careers() {
-  const { hero, positionsTitle, emptyText, generalText } = careers
+  const { positionsTitle, emptyText, generalText } = careers
+  const hero = careersHero
   const { status, jobs: positions } = useJobs()
 
   return (

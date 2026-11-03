@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import ImagePlaceholder from '../components/ImagePlaceholder.jsx'
 import Banner from '../components/Banner.jsx'
-import { images, about } from '../data/site.js'
+import { about } from '../data/aboutContent.js'
 
 export default function About() {
-  const { hero, story, timeline, board, advisors, campus, cta } = about
+  const { hero, mission, story, timeline, board, advisors, campus, cta } = about
 
   return (
     <>
@@ -35,7 +35,7 @@ export default function About() {
                 <ImagePlaceholder
                   src={story.founder.photo}
                   alt={story.founder.name}
-                  label="Add /images/team/founder.jpg"
+                  label="Add /images/team/founder.webp"
                   ratio="4 / 5"
                   className="img-ph-dark"
                 />
@@ -45,7 +45,24 @@ export default function About() {
         </div>
       </section>
 
-      {/* 3. Timeline */}
+      {/* 3. Mission & vision (new) */}
+      <section className="section section-light section-flat pt-4 pb-4">
+        <div className="container">
+          <div className="eyebrow mb-2">{mission.eyebrow}</div>
+          <h2 className="mb-5">{mission.title}</h2>
+          <div className="campus-grid">
+            {mission.cards.map((c) => (
+              <div className="campus-card" key={c.label}>
+                <div className="campus-label">{c.label}</div>
+                <h3>{c.title}</h3>
+                <p className="mb-0">{c.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Timeline */}
       <section className="section section-light section-flat pt-4">
         <div className="container">
           <div className="timeline mx-auto">
@@ -62,7 +79,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 4. Board of directors */}
+      {/* 5. Board of directors */}
       <section className="section section-light section-white">
         <div className="container">
           <div className="eyebrow mb-2">{board.eyebrow}</div>
@@ -85,7 +102,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 5. Advisors */}
+      {/* 6. Advisors */}
       <section className="section section-light section-white pt-0">
         <div className="container">
           <h2 className="mb-5">{advisors.title}</h2>
@@ -108,8 +125,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* 6. Team photo banner + campus */}
-      <Banner src={images.aboutTeam} height={280} label="Add /images/about-team.jpg (team photo)" />
+      {/* 7. Team photo banner + how we work */}
+      <Banner src={about.teamBanner} height={580} label="Add /images/about-team.jpeg (team photo)" />
 
       <section className="section section-light section-pale">
         <div className="container">
@@ -128,7 +145,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 7. Navy CTA */}
+      {/* 8. Navy CTA */}
       <section className="navy-cta about-cta">
         <div className="container">
           <div className="mx-auto" style={{ maxWidth: 640 }}>

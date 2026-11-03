@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { Logo } from './Navbar.jsx'
 import { company, footerLinks } from '../data/site.js'
+import { contactAddressLine } from '../data/contactContent.js'
 
 export default function Footer() {
   return (
@@ -8,14 +8,17 @@ export default function Footer() {
       <div className="container">
         <div className="row g-5">
           <div className="col-lg-6">
-            <Logo />
+            <Link to="/" className="sz-brand" aria-label={`${company.name} - home`}>
+              <img
+                src="/images/logo.png"
+                alt={company.name}
+                style={{ height: 44, width: 'auto', display: 'block' }}
+              />
+            </Link>
             <p className="mt-4" style={{ maxWidth: 480 }}>
               Placeholder: {company.name} develops advanced propulsion and manufacturing capabilities for
               defence applications. Replace with the final company description.
             </p>
-            <form className="footer-search" onSubmit={(e) => e.preventDefault()} role="search">
-              <input type="search" className="form-control" placeholder="Search..." aria-label="Search" />
-            </form>
           </div>
           <div className="col-6 col-lg-3 offset-lg-1">
             <h6>Programs</h6>
@@ -45,7 +48,7 @@ export default function Footer() {
 
         <div className="d-flex flex-column flex-md-row justify-content-between gap-2 mt-4 pt-3 small copyright">
           <span>© {new Date().getFullYear()} {company.name}. All rights reserved.</span>
-          <span>{company.address}</span>
+          <span>{contactAddressLine}</span>
         </div>
       </div>
     </footer>

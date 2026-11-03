@@ -15,6 +15,20 @@ export function Logo() {
   )
 }
 
+// Navbar brand: shows /public/images/logo.png.
+// (The shared <Logo /> above is untouched, so the footer keeps its current logo.)
+function NavBrand() {
+  return (
+    <Link to="/" className="sz-brand" aria-label={`${company.name} - home`}>
+      <img
+        src="/images/logo.png"
+        alt={company.name}
+        style={{ height: 44, width: 'auto', display: 'block' }}
+      />
+    </Link>
+  )
+}
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const close = () => setOpen(false)
@@ -22,7 +36,7 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg sticky-top sz-nav">
       <div className="container">
-        <Logo />
+        <NavBrand />
         <button
           className="navbar-toggler sz-toggler"
           type="button"

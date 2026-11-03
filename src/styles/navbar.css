@@ -1,0 +1,75 @@
+/* src/styles/navbar.css */
+.sz-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #060a14;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sz-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 66px;
+  position: relative;
+}
+
+.sz-logo {
+  display: inline-block;
+}
+
+.sz-logo img {
+  display: block;
+  width: auto;
+}
+
+.sz-nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.sz-nav-links a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.25rem 0;
+}
+
+.sz-nav-links a:hover,
+.sz-nav-links a.active {
+  color: #a8d13b;
+}
+
+.sz-nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+@media (max-width: 767.98px) {
+  .sz-nav-toggle {
+    display: block;
+  }
+  .sz-nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: #060a14;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.5rem 1rem 1rem;
+  }
+  .sz-nav-links.open {
+    display: flex;
+  }
+  .sz-nav-links a {
+    padding: 0.7rem 0;
+  }
+}

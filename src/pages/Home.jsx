@@ -1,24 +1,61 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import PageHero from '../components/PageHero.jsx'
 import Banner from '../components/Banner.jsx'
 import CtaBand from '../components/CtaBand.jsx'
-import { images, challenge, whyNow, solve, strategic, technology } from '../data/site.js'
+import { images } from '../data/site.js'
+import { hero, challenge, whyNow, solve, strategic, technology } from '../data/homeContent.js'
+
+// Hero background video (file lives in /public/videos/hero.mp4)
+const HERO_VIDEO = '/videos/hero.mp4'
 
 export default function Home() {
+  const videoRef = useRef(null)
+  const [videoOk, setVideoOk] = useState(true)
+
+  // Browsers only autoplay muted video; set it explicitly and try to start playback.
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.muted = true
+    const p = v.play()
+    if (p && p.catch) p.catch(() => {})
+  }, [])
+
   return (
     <>
-      {/* 1. Hero (dark) */}
-      <PageHero
-        badge="Defence • Advanced Manufacturing • Propulsion"
-        title="Advanced propulsion for"
-        accent="defence missions."
-        text="Placeholder: delivering next-generation propulsion and advanced manufacturing capabilities that strengthen the defence industrial base and power mission-ready systems."
-        image={images.hero}
-      >
-        <Link to="/contact" className="btn btn-sz">
-          Talk to our engineers <i className="bi bi-arrow-right ms-1" />
-        </Link>
-      </PageHero>
+      {/* 1. Hero (dark) with video background */}
+      <section className="hero">
+        {videoOk ? (
+          <video
+            ref={videoRef}
+            className="hero-bg"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            onError={() => setVideoOk(false)}
+          >
+            <source src={HERO_VIDEO} type="video/mp4" onError={() => setVideoOk(false)} />
+          </video>
+        ) : (
+          <div className="hero-bg fallback" />
+        )}
+        <div className="container py-5">
+          <span className="hero-badge">{hero.badge}</span>
+          <h1>
+            {hero.title} <span className="serif-accent">{hero.accent}</span>
+          </h1>
+          <p className="lead mt-3">{hero.text}</p>
+          <div className="mt-4 d-flex flex-wrap gap-3">
+            <Link to="/contact" className="btn btn-sz">
+              Talk to our engineers <i className="bi bi-arrow-right ms-1" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* 2. The challenge (light) */}
       <section className="section section-light">
@@ -130,8 +167,8 @@ export default function Home() {
                   <div className="num-badge sm">{c.n}</div>
                   <h3 className="h5 fw-bold mt-3">{c.title}</h3>
                   <p className="text-muted-sz">{c.text}</p>
-                  <Link to="/defence" className="tech-link">
-                    Learn more <i className="bi bi-arrow-right" />
+                  <Link to={c.to || '/defence'} className="tech-link">
+                    {c.cta || 'Learn more'} <i className="bi bi-arrow-right" />
                   </Link>
                 </div>
               </div>

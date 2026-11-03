@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import PageHero from '../components/PageHero.jsx'
-import { company, contact } from '../data/site.js'
+import { contact } from '../data/site.js'
+import { contactInfo } from '../data/contactContent.js'
 import { sendContact } from '../services/api.js'
 
 const empty = { name: '', email: '', organization: '', phone: '', message: '', website: '' }
 
 export default function Contact() {
-  const { hero, directTitle, emailNote, hqTitle, hq, specificTitle, specific, disclaimer } = contact
+  const { hero, directTitle, emailNote, hqTitle, specificTitle, specific, disclaimer } = contact
+  const { email, hq } = contactInfo
   const [form, setForm] = useState(empty)
   const [status, setStatus] = useState({ type: '', msg: '' })
   const [busy, setBusy] = useState(false)
@@ -75,7 +77,7 @@ export default function Contact() {
                 <div className="ct-row">
                   <span className="ct-icon"><i className="bi bi-envelope" /></span>
                   <div>
-                    <a href={`mailto:${company.email}`} className="ct-strong">{company.email}</a>
+                    <a href={`mailto:${email}`} className="ct-strong">{email}</a>
                     <div>{emailNote}</div>
                   </div>
                 </div>
