@@ -8,10 +8,11 @@ export default function Footer() {
       <div className="container">
         <div className="row g-5">
           <div className="col-lg-6">
-            <Logo />
+            <Logo height={46} />
             <p className="mt-4" style={{ maxWidth: 480 }}>
-              Placeholder: {company.name} develops advanced propulsion and manufacturing capabilities for
-              defence applications. Replace with the final company description.
+              {company.name} is part of the Space Zone group in Chennai. Building on the restartable,
+              reusable hybrid rocket technology proven by Mission RHUMI Twin, we develop propulsion and
+              engineering capability for defence applications.
             </p>
             <form className="footer-search" onSubmit={(e) => e.preventDefault()} role="search">
               <input type="search" className="form-control" placeholder="Search..." aria-label="Search" />

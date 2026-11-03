@@ -1,49 +1,59 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { company, navLinks } from '../data/site.js'
+import '../styles/navbar.css'
 
-export function Logo() {
+// Logo file is at public/images/logo.png  ->  served as /images/logo.png
+const LOGO_SRC = '/images/logo.png'
+
+// Shared logo: used by the Navbar and by Footer.jsx (import { Logo } from './Navbar.jsx')
+export function Logo({ height = 38, onClick }) {
   return (
-    <Link to="/" className="sz-brand">
-      <svg className="sz-mark" viewBox="0 0 40 40" aria-hidden="true">
-        <path d="M4 6l16 28L36 6l-8 0-8 14-8-14z" fill="var(--sz-accent)" />
-      </svg>
-      <span>
-        <strong>{company.short}</strong> {company.suffix}
-      </span>
+    <Link to="/" className="sz-logo" onClick={onClick} aria-label="Space Zone Defence home">
+      <img src={LOGO_SRC} alt="Space Zone Defence" style={{ height }} />
     </Link>
   )
 }
 
+const links = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/defence', label: 'Defence' },
+  { to: '/about', label: 'About' },
+  { to: '/careers', label: 'Careers' },
+  { to: '/contact', label: 'Contact' },
+]
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const close = () => setOpen(false)
 
   return (
-    <nav className="navbar navbar-expand-lg sticky-top sz-nav">
-      <div className="container">
-        <Logo />
+    <header className="sz-nav">
+      <div className="container sz-nav-row">
+        <Logo onClick={() => setOpen(false)} />
+
         <button
-          className="navbar-toggler sz-toggler"
           type="button"
-          aria-label="Toggle navigation"
+          className="sz-nav-toggle"
+          aria-label="Toggle menu"
           aria-expanded={open}
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen((o) => !o)}
         >
           <i className={`bi ${open ? 'bi-x-lg' : 'bi-list'}`} />
         </button>
-        <div className={`collapse navbar-collapse justify-content-end ${open ? 'show' : ''}`}>
-          <ul className="navbar-nav align-items-lg-center">
-            {navLinks.map((l) => (
-              <li className="nav-item" key={l.to}>
-                <NavLink to={l.to} end={l.to === '/'} className="nav-link" onClick={close}>
-                  {l.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
+
+        <nav className={`sz-nav-links ${open ? 'open' : ''}`}>
+          {links.map((l) => (
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.end}
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              {l.label}
+            </NavLink>
+          ))}
+        </nav>
       </div>
-    </nav>
+    </header>
   )
 }

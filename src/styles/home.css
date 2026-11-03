@@ -1,0 +1,125 @@
+/* src/styles/home.css  (imported by Home.jsx) */
+
+/* ---------- Hero with video ---------- */
+.sz-hero {
+  position: relative;
+  min-height: min(92vh, 760px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #080c16;
+  color: #fff;
+}
+
+.sz-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center; /* keeps the rocket stand on the clear right half */
+}
+
+/* Left 50% = dark shadow, right 50% = clear video */
+.sz-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 12, 22, 0.97) 0%,
+    rgba(8, 12, 22, 0.92) 30%,
+    rgba(8, 12, 22, 0.78) 45%,
+    rgba(8, 12, 22, 0) 58%
+  );
+  pointer-events: none;
+}
+
+.sz-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-block: 5rem;
+}
+
+.sz-hero-copy {
+  max-width: 560px; /* stays inside the left half */
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid #2f5fd0;
+  border-radius: 999px;
+  color: #6f9bff;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sz-hero h1 {
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  line-height: 1.1;
+  margin: 1.1rem 0 1rem;
+}
+
+.sz-hero .hero-accent {
+  display: block;
+  color: #a8d13b;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.sz-hero p.hero-text {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+/* Tablet and phone: video fills the screen, shade covers the text area */
+@media (max-width: 991.98px) {
+  .sz-hero-shade {
+    background: linear-gradient(
+      180deg,
+      rgba(8, 12, 22, 0.55) 0%,
+      rgba(8, 12, 22, 0.9) 100%
+    );
+  }
+  .sz-hero-video {
+    object-position: 75% center;
+  }
+}
+
+/* ---------- Full-width cover photo ---------- */
+.photo-cover {
+  width: 100%;
+  height: clamp(320px, 48vw, 640px); /* fixed band height on every screen */
+  overflow: hidden;
+  background: #0f1a33;
+}
+
+.photo-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* fills the full band, no empty space */
+  object-position: center bottom; /* keeps the bottom, crops (drops) the top */
+}
+/* src/styles/home.css  (imported by Home.jsx) */
+
+/* ---------- Full-width cover photo ---------- */
+.photo-cover {
+  width: 100%;
+  height: clamp(320px, 48vw, 640px); /* fixed band height on every screen */
+  overflow: hidden;
+  background: #0f1a33;
+}
+
+.photo-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* fills the full band, no empty space */
+  object-position: center bottom; /* keeps the bottom, crops (drops) the top */
+}
